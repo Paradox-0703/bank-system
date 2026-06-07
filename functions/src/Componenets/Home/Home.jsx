@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Navbar from "./Navbar/Navbar"
 import Welcome from "./Welcome/Welcome"
 import Body from "./Body/Body"
@@ -31,3 +32,6 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
