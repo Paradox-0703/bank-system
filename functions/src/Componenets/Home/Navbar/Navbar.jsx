@@ -1,21 +1,60 @@
-import React from 'react'
+import { NavLink, useNavigate } from "react-router-dom";
 
-const navbar = () => {
+function Navbar() {
+  const navigate = useNavigate();
+
+  const linkStyle = ({ isActive }) => ({
+    margin: "0 10px",
+    textDecoration: "none",
+    color: isActive ? "blue" : "black",
+    fontWeight: isActive ? "bold" : "normal",
+  });
+
   return (
-    <div className="flex justify-between items-center mb-6">
-     <h1 className="text-2xl font-bold text-blue-900">
-          MyBank
-        </h1>
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "10px 20px",
+        backgroundColor: "#f5f5f5",
+        borderBottom: "1px solid #ddd",
+        mb:"20px",
+      }}
+    >
+      {/* Logo */}
+      <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+        Bank App
+      </h2>
 
-        <div className=" text-black flex items-center justify-center">
-          <ul className="flex  text-white rounded-full">
-            <li className="mx-5  px-2 bg-blue-900 items-center justify-center">Sign up</li>
-            <li className="mx-5 px-2  bg-blue-900 items-center justify-center">Log in</li>
-            <li className="mx-5  px-2 bg-blue-900 items-center justify-center">Profile</li>
-          </ul>
-        </div>
-    </div>
-  )
+      {/* Links */}
+      <div>
+        <NavLink to="/" style={linkStyle}>
+          Home
+        </NavLink>
+
+        <NavLink to="/profile" style={linkStyle}>
+          Profile
+        </NavLink>
+      </div>
+
+      {/* Button */}
+      <button
+        onClick={() => navigate("/profile")}
+        style={{
+          padding: "6px 12px",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Sign In
+      </button>
+    </nav>
+  );
 }
 
-export default navbar
+export default Navbar;
+
